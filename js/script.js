@@ -13,3 +13,15 @@ function getRandomCat() {
       cat_result.innerHTML = `<img src=${data.file} alt="cat" />`;
     });
 }
+
+function getRandomDog() {
+  fetch("https://random.dog/woof.json")
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.url.includes(".mp4")) {
+        getRandomDog();
+      } else {
+        dog_result.innerHTML = `<img src=${data.url} alt="dog" />`;
+      }
+    });
+}
